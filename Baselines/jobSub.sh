@@ -5,7 +5,7 @@
 #$ -q gpu
 #$ -l gpu_card=1
 
-#$ -N CV_Project_Experiments
+#$ -N AA_Project_Experiments
 
 module load python/3.7.3
 module load pytorch
