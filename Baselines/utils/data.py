@@ -28,5 +28,15 @@ from models import ModelsV1
 
 if __name__ == '__main__':
     D = DataSetHandler()
-    traindf, valdf, testdf = D.initialize_classification_dataframes('c_tinyimagenet')
+    for ds in ['c_tinyimagenet', 'c_ham', 'd_pascal', 's_glas']:
+        print(f'Retrieving dataset {ds}..')
+        traindf, valdf, testdf = D.initialize_classification_dataframes(ds)
+        if valdf is not None:
+            print(f'Train len: {len(traindf)}, Val len: {len(valdf)}, test len: {len(testdf)}.', end='\n\n')
+        else:
+            print(f'Train len: {len(traindf)}, test len: {len(testdf)}.', end='\n\n')
+    
+    print(f'\n---\nGetting models..', end='\n\n')
     m = ModelsV1()
+    model = m.initialize_model('densenet201')
+    print(model)
